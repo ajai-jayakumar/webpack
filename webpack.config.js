@@ -1,11 +1,20 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const VENDOR_LIBS = [
+    'angular', 'lodash'
+];
 
 const config = {
-    entry: './src/index.js',
+    entry: {
+        bundle: './src/index.js',
+        vendor: VENDOR_LIBS
+    },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js',
+        filename: '[name].[chunkhash].js',
         publicPath: 'build/'
     },
     module: {
@@ -35,6 +44,13 @@ const config = {
     plugins: [
         new ExtractTextPlugin({
             filename: "style.css"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor','manifest']
+        }),
+        new HtmlWebpackPlugin({
+            filename: '../index.html',
+            template:'src/index.html'
         })
     ]
 };
