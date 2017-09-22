@@ -14,8 +14,15 @@ const config = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].[chunkhash].js',
+        filename: '[name].js',
         publicPath: 'build/'
+    },
+    devServer: {
+        compress: true,
+        stats: "errors-only",
+        historyApiFallback: true,
+        host: 'localhost', // Defaults to `localhost`
+        port: 8081, // Defaults to 8080
     },
     module: {
         rules: [{

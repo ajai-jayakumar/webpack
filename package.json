@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "rimraf build",
-    "build": "npm run clean && webpack"
+    "build": "npm run clean && webpack",
+    "serve": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,8 @@
     "rimraf": "^2.6.2",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
     "angular": "^1.6.6",
